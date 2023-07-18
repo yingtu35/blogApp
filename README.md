@@ -85,7 +85,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-blogApp is a web application that people can post, view, like and comment blogs within the blogApp community./
+blogApp is a web application that people can post, view, like and comment blogs within the blogApp community.
 
 blogApp is initially created as a project assignment from the course [full stack open](https://fullstackopen.com/en/).
 
@@ -101,7 +101,7 @@ I further modified the frontend view and add some extra functionalities to the b
 * [![Express][Express.dev]][Express-url]
 * [![React][React.js]][React-url]
 * [![MUI][MUI.com]][MUI-url]
-* [![Node][Node.com]][Node-url]
+* [![Nodejs][Nodejs.com]][Nodejs-url]
 * [![Docker][Docker.com]][Docker-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -119,9 +119,11 @@ To get a local copy up and running follow these simple example steps.
 This is an example of how to list things you need to use the software and how to install them.
 * npm
   Recommend using nvm for Node version management
+
   [nvm][nvm-url]
 * Docker
   Use docker to easily build, and run the application
+
   [Docker][Docker.com]
 
 ### Installation
@@ -247,4 +249,5 @@ Project Link: [https://github.com/yingtu35/blogApp](https://github.com/yingtu35/
 [Node.js.com]: https://img.shields.io/badge/Node.js-000000?style=for-the-badge&logo=Node.js&logoColor=339933
 [Node.js-url]: https://nodejs.org/en
 [Docker.com]: https://img.shields.io/badge/Docker-20232A?style=for-the-badge&logo=Docker&logoColor=2496ED
-[Docker-url]: https://www.docker.com/ 
+[Docker-url]: https://www.docker.com/
+[nvm-url]: https://github.com/nvm-sh/nvm
