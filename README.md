@@ -211,9 +211,9 @@ Project Link: [https://github.com/yingtu35/blogApp](https://github.com/yingtu35/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Full Stack open](https://fullstackopen.com/en/)
+<!-- * []()
+* []() -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -244,7 +244,7 @@ Project Link: [https://github.com/yingtu35/blogApp](https://github.com/yingtu35/
 [Express-url]: https://expressjs.com/
 [MUI.com]: https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=MUI&logoColor=white
 [MUI-url]: https://mui.com/
-[Node.com]: https://img.shields.io/badge/Node-000000?style=for-the-badge&logo=Node&logoColor=339933
-[Node-url]: https://nodejs.org/en
+[Node.js.com]: https://img.shields.io/badge/Node.js-000000?style=for-the-badge&logo=Node.js&logoColor=339933
+[Node.js-url]: https://nodejs.org/en
 [Docker.com]: https://img.shields.io/badge/Docker-20232A?style=for-the-badge&logo=Docker&logoColor=2496ED
 [Docker-url]: https://www.docker.com/ 
