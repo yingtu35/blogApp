@@ -101,7 +101,7 @@ I further modified the frontend view and add some extra functionalities to the b
 * [![Express][Express.dev]][Express-url]
 * [![React][React.js]][React-url]
 * [![MUI][MUI.com]][MUI-url]
-* [![Nodejs][Nodejs.com]][Nodejs-url]
+* [![Node.js][Node.js.com]][Node.js-url]
 * [![Docker][Docker.com]][Docker-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -117,30 +117,60 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* **npm**
   Recommend using nvm for Node version management
 
   [nvm][nvm-url]
-* Docker
+* **Docker**
   Use docker to easily build, and run the application
 
   [Docker][Docker.com]
 
 ### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+* **Run in the host machine**
+1. Clone the repo
    ```sh
    git clone https://github.com/yingtu35/blogApp.git
    ```
-3. Install NPM packages
+2. Install NPM packages on both backend and frontend folders
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Create a .env file in the backend folder for mongodb url and jwt secret
+   ```sh
+   TEST_MONGODB_URL=paste your testing mongo url here
+   MONGODB_URL=paste your mongodb url here
+   SECRET=paste your jwt secret here
    ```
+4. Create a .env file in the frontend folder for connection to the backend service
+    ```sh
+    REACT_APP_BACKEND_URL=http://localhost:portForYourBackend
+    ```
+5. Start both server in the development mode
+    * backend
+      ```sh
+      npm run start:test
+      ```
+     * frontend
+       ```sh
+       npm start
+       ```
+
+* **Run in Docker**
+1. Clone the repo
+   ```sh
+   git clone https://github.com/yingtu35/blogApp.git
+   ```
+2. In blogApp directory, run the container in either development mode or production mode
+     * development
+        ```sh
+        docker compose -f docker-compose.dev.yml up
+        ```
+     * production
+        ```sh
+        docker compose up
+        ```
+  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -233,7 +263,7 @@ Project Link: [https://github.com/yingtu35/blogApp](https://github.com/yingtu35/
 [issues-url]: https://github.com/yingtu35/blogApp/issues
 [license-shield]: https://img.shields.io/github/license/yingtu35/blogApp.svg?style=for-the-badge
 [license-url]: https://github.com/yingtu35/blogApp/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=0A66C2
 [linkedin-url]: https://linkedin.com/in/yingtu
 [product-screenshot]: images/screenshot.png
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
