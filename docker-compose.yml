@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    image: blog-frontend
+    build: ./frontend
+    # ports:
+    #   - 8080:80
+  
+  server:
+    image: blog-backend
+    build: ./backend
+    # ports:
+    #   - 3003:3000
+    env_file:
+      - ./backend/.env
+    
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: blog-reverse-proxy
+    depends_on:
+      - app
+      - server
