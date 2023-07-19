@@ -1,0 +1,24 @@
+name: tests for backend
+
+on:
+    push:
+        branches:
+            - main
+
+defaults:
+    run:
+        working-directory: ./backend
+
+jobs:
+    backend-test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                node-version: '16'
+            - name: npm install
+              run: npm install
+            - name: npm test
+              run: npm test
+                    
