@@ -19,7 +19,7 @@ morgan.token("body", (req) => {
 
 mongoose.set("strictQuery", false)
 
-logger.info("Connecting to", config.MONGODB_URL)
+logger.info(`Connecting to ${config.MONGODB_URL}`)
 mongoose
   .connect(config.MONGODB_URL)
   .then(() => {
