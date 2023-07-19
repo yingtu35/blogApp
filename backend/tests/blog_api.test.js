@@ -15,7 +15,7 @@ describe("fetching blogs from the database", () => {
   test("succeeds and return as json", async () => {
     const authorization = await helper.getToken()
     await api
-      .get("/api/blogs")
+      .get("/blogs")
       .set("Authorization", authorization)
       .expect(200)
       .expect("Content-Type", /application\/json/)
@@ -24,7 +24,7 @@ describe("fetching blogs from the database", () => {
   test("received all blogs", async () => {
     const authorization = await helper.getToken()
     const response = await api
-      .get("/api/blogs")
+      .get("/blogs")
       .set("Authorization", authorization)
     const blogs = response.body
     expect(blogs).toHaveLength(helper.initialBlogs.length)
@@ -33,7 +33,7 @@ describe("fetching blogs from the database", () => {
   test("fails when token is invalid and return 401 with proper message", async () => {
     const authorization = await helper.getInvalidToken()
     const response = await api
-      .get("/api/blogs")
+      .get("/blogs")
       .set("Authorization", authorization)
       .expect(401)
     expect(response.body.error).toBe("token invalid")
@@ -41,13 +41,13 @@ describe("fetching blogs from the database", () => {
   test("fails when token is expired and return 400 with proper message", async () => {
     const authorization = await helper.getExpiredToken()
     const response = await api
-      .get("/api/blogs")
+      .get("/blogs")
       .set("Authorization", authorization)
       .expect(400)
     expect(response.body.error).toBe("token expired")
   })
   test("fails and return 400 when token is expired", async () => {
-    const response = await api.get("/api/blogs").expect(400)
+    const response = await api.get("/blogs").expect(400)
     expect(response.body.error).toBe("token missing")
   })
 })
@@ -56,7 +56,7 @@ describe("unique identifier of blogs", () => {
   test("is id", async () => {
     const authorization = await helper.getToken()
     const response = await api
-      .get("/api/blogs")
+      .get("/blogs")
       .set("Authorization", authorization)
     const firstBlog = response.body[0]
     expect(firstBlog.id).toBeDefined()
@@ -74,14 +74,14 @@ describe("adding a new blog", () => {
     }
 
     await api
-      .post("/api/blogs")
+      .post("/blogs")
       .set("Authorization", authorization)
       .send(newBlog)
       .expect(201)
       .expect("Content-Type", /application\/json/)
 
     const response = await api
-      .get("/api/blogs")
+      .get("/blogs")
       .set("Authorization", authorization)
     const titles = response.body.map((blog) => blog.title)
     expect(titles).toHaveLength(helper.initialBlogs.length + 1)
@@ -97,7 +97,7 @@ describe("adding a new blog", () => {
     }
 
     const response = await api
-      .post("/api/blogs")
+      .post("/blogs")
       .set("Authorization", authorization)
       .send(newBlog)
     const returnedBlog = response.body
@@ -113,7 +113,7 @@ describe("adding a new blog", () => {
     }
 
     await api
-      .post("/api/blogs")
+      .post("/blogs")
       .set("Authorization", authorization)
       .send(newBlog)
       .expect(400)
@@ -128,7 +128,7 @@ describe("adding a new blog", () => {
     }
 
     await api
-      .post("/api/blogs")
+      .post("/blogs")
       .set("Authorization", authorization)
       .send(newBlog)
       .expect(400)
@@ -146,7 +146,7 @@ describe("adding a comment to a blog", () => {
     }
 
     const response = await api
-      .post(`/api/blogs/${firstBlog.id}/comments`)
+      .post(`/blogs/${firstBlog.id}/comments`)
       .set("Authorization", authorization)
       .send(comment)
       .expect(201)
@@ -167,7 +167,7 @@ describe("adding a comment to a blog", () => {
     }
 
     await api
-      .post(`/api/blogs/${firstBlog.id}/comments`)
+      .post(`/blogs/${firstBlog.id}/comments`)
       .set("Authorization", authorization)
       .send(comment)
       .expect(400)
@@ -184,7 +184,7 @@ describe("deleting a blog", () => {
     const blogsAtStart = await helper.blogsInDb()
     const firstBlog = blogsAtStart[0]
     await api
-      .delete(`/api/blogs/${firstBlog.id}`)
+      .delete(`/blogs/${firstBlog.id}`)
       .set("Authorization", authorization)
       .expect(204)
 
@@ -197,7 +197,7 @@ describe("deleting a blog", () => {
     const id = await helper.nonExistingId()
 
     await api
-      .delete(`/api/blogs/${id}`)
+      .delete(`/blogs/${id}`)
       .set("Authorization", authorization)
       .expect(403)
   })
@@ -207,7 +207,7 @@ describe("deleting a blog", () => {
     const malformattedId = "123"
 
     await api
-      .delete(`/api/blogs/${malformattedId}`)
+      .delete(`/blogs/${malformattedId}`)
       .set("Authorization", authorization)
       .expect(400)
   })
@@ -226,7 +226,7 @@ describe("deleting a blog", () => {
     const returnedBlog = await newBlog.save()
 
     await api
-      .delete(`/api/blogs/${returnedBlog._id}`)
+      .delete(`/blogs/${returnedBlog._id}`)
       .set("Authorization", authorization)
       .expect(403)
 
@@ -247,7 +247,7 @@ describe("updating a blog", () => {
     }
 
     const res = await api
-      .put(`/api/blogs/${firstBlog.id}`)
+      .put(`/blogs/${firstBlog.id}`)
       .set("Authorization", authorization)
       .send(newBlog)
       .expect(200)
@@ -265,7 +265,7 @@ describe("updating a blog", () => {
     const firstBlog = blogs[0]
 
     await api
-      .put(`/api/blogs/${id}`)
+      .put(`/blogs/${id}`)
       .set("Authorization", authorization)
       .send(firstBlog)
       .expect(404)
@@ -278,7 +278,7 @@ describe("updating a blog", () => {
     const firstBlog = blogs[0]
 
     await api
-      .put(`/api/blogs/${id}`)
+      .put(`/blogs/${id}`)
       .set("Authorization", authorization)
       .send(firstBlog)
       .expect(400)

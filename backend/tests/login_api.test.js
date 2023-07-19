@@ -17,7 +17,7 @@ describe("user authentication", () => {
         }
 
         const response = await api
-            .post("/api/login")
+            .post("/login")
             .send(loginInfo)
             .expect(200)
             .expect("Content-Type", /application\/json/)
@@ -33,7 +33,7 @@ describe("user authentication", () => {
         }
 
         const response = await api
-            .post("/api/login")
+            .post("/login")
             .send(loginInfo)
             .expect(401)
 
@@ -46,7 +46,7 @@ describe("user authentication", () => {
         }
 
         const response = await api
-            .post("/api/login")
+            .post("/login")
             .send(loginInfo)
             .expect(401)
 

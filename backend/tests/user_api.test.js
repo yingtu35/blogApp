@@ -12,7 +12,7 @@ beforeEach(async () => {
 describe("viewing users list", () => {
   test("return in json format", async () => {
     await api
-      .get("/api/users")
+      .get("/users")
       .expect(200)
       .expect("Content-Type", /application\/json/)
   })
@@ -34,7 +34,7 @@ describe("viewing a specific user", () => {
     const firstUser = users[0]
 
     const response = await api
-      .get(`/api/users/${firstUser.id}`)
+      .get(`/users/${firstUser.id}`)
       .expect(200)
       .expect("Content-Type", /application\/json/)
     const returnedUser = response.body
@@ -44,7 +44,7 @@ describe("viewing a specific user", () => {
 
   test("fails with malformatted id", async () => {
     const wrongId = "123"
-    await api.get(`/api/users/${wrongId}`).expect(400)
+    await api.get(`/users/${wrongId}`).expect(400)
   })
 })
 describe("adding a user", () => {
@@ -58,7 +58,7 @@ describe("adding a user", () => {
     }
 
     const response = await api
-      .post("/api/users")
+      .post("/users")
       .send(newUser)
       .expect(201)
       .expect("Content-Type", /application\/json/)
@@ -76,7 +76,7 @@ describe("adding a user", () => {
       name: "admin2",
     }
 
-    await api.post("/api/users").send(newUser).expect(400)
+    await api.post("/users").send(newUser).expect(400)
 
     const usersAtEnd = await helper.usersInDb()
     expect(usersAtEnd).toHaveLength(usersAtStart.length)
@@ -89,7 +89,7 @@ describe("adding a user", () => {
       name: "admin2",
     }
 
-    await api.post("/api/users").send(newUser).expect(400)
+    await api.post("/users").send(newUser).expect(400)
 
     const usersAtEnd = await helper.usersInDb()
     expect(usersAtEnd).toHaveLength(usersAtStart.length)
@@ -102,7 +102,7 @@ describe("adding a user", () => {
       name: "admin2",
     }
 
-    await api.post("/api/users").send(newUser).expect(400)
+    await api.post("/users").send(newUser).expect(400)
 
     const usersAtEnd = await helper.usersInDb()
     expect(usersAtEnd).toHaveLength(usersAtStart.length)
@@ -116,7 +116,7 @@ describe("adding a user", () => {
       name: "admin2",
     }
 
-    await api.post("/api/users").send(newUser).expect(400)
+    await api.post("/users").send(newUser).expect(400)
 
     const usersAtEnd = await helper.usersInDb()
     expect(usersAtEnd).toHaveLength(usersAtStart.length)
@@ -130,7 +130,7 @@ describe("adding a user", () => {
       name: "passwordTooShort",
     }
 
-    const response = await api.post("/api/users").send(newUser).expect(400)
+    const response = await api.post("/users").send(newUser).expect(400)
 
     expect(response.body.error).toBe("password must be at least 3 characters")
     const usersAtEnd = await helper.usersInDb()
