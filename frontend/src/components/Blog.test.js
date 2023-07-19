@@ -3,6 +3,8 @@ import "@testing-library/jest-dom/extend-expect"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import Blog from "./Blog"
+import { Provider } from "react-redux"
+import store from "../buildStore"
 
 describe ("<Blog>", () => {
   let container
@@ -10,27 +12,29 @@ describe ("<Blog>", () => {
   let removeBlog
 
   beforeEach(() => {
-    const user = {
-      username: "test",
-      name: "test"
-    }
-    const blog = {
-      title: "test title",
-      author: "test author",
-      url: "www.test.com",
-      likes: 0,
-      id: "testtesttest",
-      user: user
-    }
+    // const user = {
+    //   username: "test",
+    //   name: "test"
+    // }
+    // const blog = {
+    //   title: "test title",
+    //   author: "test author",
+    //   url: "www.test.com",
+    //   likes: 0,
+    //   id: "testtesttest",
+    //   user: user
+    // }
 
-    addLikes = jest.fn()
-    removeBlog = jest.fn()
+    // addLikes = jest.fn()
+    // removeBlog = jest.fn()
     container = render(
-      <Blog blog={blog} user={user} addLikes={addLikes} removeBlog={removeBlog} />
+      <Provider store={store}>
+        <Blog />
+      </Provider>
     ).container
   })
 
-  test("at start, render blog's title and author only", () => {
+  test.only("at start, render blog's title and author only", () => {
     const element = screen.getByText("test title test author")
     const detail = container.querySelector(".blogDetail")
     expect(element).toBeDefined()

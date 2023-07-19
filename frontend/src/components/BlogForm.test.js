@@ -3,13 +3,17 @@ import "@testing-library/jest-dom/extend-expect"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import BlogForm from "./BlogForm"
+import { Provider } from "react-redux"
+import store from "../store"
 
 describe("<BlogForm>", () => {
   test("calls event handler with the right details of blog", async () => {
     const createBlog = jest.fn(() => true)
 
     render(
-      <BlogForm createBlog={createBlog} />
+      <Provider store={store}>
+        <BlogForm createBlog={createBlog} />
+      </Provider>
     )
 
     const user = userEvent.setup()
@@ -33,7 +37,9 @@ describe("<BlogForm>", () => {
     const createBlog = jest.fn(() => {return true})
 
     render(
-      <BlogForm createBlog={createBlog} />
+      <Provider store={store}>
+        <BlogForm createBlog={createBlog} />
+      </Provider>
     )
 
     const user = userEvent.setup()
@@ -56,7 +62,9 @@ describe("<BlogForm>", () => {
     const createBlog = jest.fn(() => {return false})
 
     render(
-      <BlogForm createBlog={createBlog} />
+      <Provider store={store}>
+        <BlogForm createBlog={createBlog} />
+      </Provider>
     )
 
     const user = userEvent.setup()
