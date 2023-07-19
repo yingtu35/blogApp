@@ -22,8 +22,13 @@ jobs:
             - name: create .env file
               run: |
                 touch .env
-                echo TEST_MONGODB_URL=${{ secrets.TEST_MONGODB_URL }} >> .env
-                echo SECRET=${{ secrets.SECRET }} >> .env
+                echo TEST_MONGODB_URL=$TEST_MONGODB_URL >> .env
+                echo SECRET=$SECRET >> .env
+                echo NODE_ENV=$NODE_ENV >> .env
+              env:
+                TEST_MONGODB_URL: ${{ secrets.TEST_MONGODB_URL }}
+                SECRET: ${{ secrets.SECRET }}
+                NODE_ENV: test
             - name: npm test
-              run: npm test
+              run: jest --verbose --runInBand tests/
                     
