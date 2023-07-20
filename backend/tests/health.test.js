@@ -1,7 +1,13 @@
 const supertest = require("supertest");
 const app = require("../app");
+const mongoose = require("mongoose");
+const helper = require("./test.helper");
 
 const api = supertest(app);
+
+beforeEach(async () => {
+  await helper.initializeUsers();
+});
 
 describe("health check", () => {
   test("return an ok", async () => {
@@ -11,4 +17,8 @@ describe("health check", () => {
       .expect("Content-Type", /text\/html/);
     expect(response.text).toBe("ok");
   });
+});
+
+afterAll(() => {
+  mongoose.connection.close();
 });

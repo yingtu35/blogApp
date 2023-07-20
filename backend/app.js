@@ -36,7 +36,7 @@ app.use(
 );
 
 if (process.env.NODE_ENV === "test") {
-  const testRouter = require("./controllers/test");
+  const testRouter = require("./controllers/tests");
   app.use("/test", testRouter);
 }
 
@@ -48,7 +48,6 @@ app.use("/login", loginRouter);
 app.get("/health", (req, res) => {
   res.send("ok");
 });
-
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
 
