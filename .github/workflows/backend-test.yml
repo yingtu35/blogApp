@@ -1,34 +1,38 @@
 name: tests for backend
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 defaults:
-    run:
-        working-directory: ./backend
+  run:
+    working-directory: ./backend
 
 jobs:
-    backend-test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                node-version: '16'
-            - name: npm install
-              run: npm install
-            - name: create .env file
-              run: |
-                touch .env
-                echo TEST_MONGODB_URL=$TEST_MONGODB_URL >> .env
-                echo SECRET=$SECRET >> .env
-                echo NODE_ENV=$NODE_ENV >> .env
-              env:
-                TEST_MONGODB_URL: ${{ secrets.TEST_MONGODB_URL }}
-                SECRET: ${{ secrets.SECRET }}
-                NODE_ENV: test
-            - name: npm test
-              run: npm test
-                    
+  backend-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: npm install
+        run: npm install
+      - name: create .env file
+        run: |
+          touch .env
+          echo TEST_MONGODB_URL=$TEST_MONGODB_URL >> .env
+          echo SECRET=$SECRET >> .env
+          echo NODE_ENV=$NODE_ENV >> .env
+        env:
+          TEST_MONGODB_URL: ${{ secrets.TEST_MONGODB_URL }}
+          SECRET: ${{ secrets.SECRET }}
+          NODE_ENV: test
+      - name: npm run eslint
+        run: npm run eslint
+      - name: npm test
+        run: npm test

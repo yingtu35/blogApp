@@ -1,10 +1,12 @@
 import React from "react"
+import { BrowserRouter as Router } from "react-router-dom"
 import "@testing-library/jest-dom/extend-expect"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import Blog from "./Blog"
 import { Provider } from "react-redux"
 import store from "../buildStore"
+// ! The tests are broken after redux-toolkit is used, awaiting fixing
 
 describe ("<Blog>", () => {
   let container
@@ -27,14 +29,20 @@ describe ("<Blog>", () => {
 
     // addLikes = jest.fn()
     // removeBlog = jest.fn()
+
     container = render(
       <Provider store={store}>
         <Blog />
       </Provider>
-    ).container
+      , { route: "/blogs/1" }).container
   })
 
-  test.only("at start, render blog's title and author only", () => {
+  test.only("render its title and author", () => {
+    const title = screen.getByText("test title")
+    expect(title).toBeDefined()
+  })
+
+  test("at start, render blog's title and author only", () => {
     const element = screen.getByText("test title test author")
     const detail = container.querySelector(".blogDetail")
     expect(element).toBeDefined()

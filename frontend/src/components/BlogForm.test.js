@@ -6,6 +6,8 @@ import BlogForm from "./BlogForm"
 import { Provider } from "react-redux"
 import store from "../store"
 
+// ! The tests are broken after redux-toolkit is used, awaiting fixing
+
 describe("<BlogForm>", () => {
   test("calls event handler with the right details of blog", async () => {
     const createBlog = jest.fn(() => true)

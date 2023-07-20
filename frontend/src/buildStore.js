@@ -3,16 +3,18 @@ import NotificationReducer from "./reducers/NotificationReducer"
 import BlogReducer from "./reducers/BlogReducer"
 import UserReducer from "./reducers/UserReducer"
 
+// * buildStore is used for testing only
+
 const user = {
-  username: "test",
-  name: "test"
+  username: "test author",
+  name: "test author"
 }
 const blog = {
   title: "test title",
   author: "test author",
   url: "www.test.com",
   likes: 0,
-  id: "testtesttest",
+  id: "1",
   user: user
 }
 const store = configureStore({
