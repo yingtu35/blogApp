@@ -32,7 +32,7 @@ mongoose
 app.use(cors());
 app.use(express.json());
 app.use(
-  morgan(":method :url :status :res[content-length] - :response-time ms :body"),
+  morgan(":method :url :status :res[content-length] - :response-time ms :body")
 );
 
 if (process.env.NODE_ENV === "test") {
@@ -44,6 +44,11 @@ app.use(middleware.tokenExtractor);
 app.use("/blogs", middleware.userExtractor, blogRouter);
 app.use("/users", userRouter);
 app.use("/login", loginRouter);
+
+app.get("/health", (req, res) => {
+  res.send("ok");
+});
+
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
 
