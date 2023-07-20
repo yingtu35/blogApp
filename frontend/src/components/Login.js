@@ -1,33 +1,33 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-import Container from "@mui/material/Container"
-import Box from "@mui/material/Box"
-import TextField from "@mui/material/TextField"
-import Button from "@mui/material/Button"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
-import Typography from "@mui/material/Typography"
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Typography from "@mui/material/Typography";
 
 const Login = ({ userLogin }) => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [isRemember, setIsRemember] = useState(true)
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isRemember, setIsRemember] = useState(true);
 
   const handleLogin = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const credential = {
       username,
       password,
       isRemember,
-    }
-    const isLogged = await userLogin(credential)
+    };
+    const isLogged = await userLogin(credential);
     if (isLogged) {
-      setUsername("")
-      setPassword("")
+      setUsername("");
+      setPassword("");
     }
-  }
+  };
 
   return (
     <Container maxWidth="xs">
@@ -78,11 +78,11 @@ const Login = ({ userLogin }) => {
         </Box>
       </Box>
     </Container>
-  )
-}
+  );
+};
 
 Login.proptypes = {
   userLogin: PropTypes.string.isRequired,
-}
+};
 
-export default Login
+export default Login;

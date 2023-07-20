@@ -1,32 +1,32 @@
-const userRouter = require('express').Router();
-const User = require('../models/user');
-const bcrypt = require('bcryptjs');
+const userRouter = require("express").Router();
+const User = require("../models/user");
+const bcrypt = require("bcryptjs");
 
-userRouter.get('/:id', async (req, res) => {
-  const user = await User.findById(req.params.id).populate('blogs', [
-    'url',
-    'title',
-    'author',
-    'id',
+userRouter.get("/:id", async (req, res) => {
+  const user = await User.findById(req.params.id).populate("blogs", [
+    "url",
+    "title",
+    "author",
+    "id",
   ]);
   res.json(user);
 });
 
-userRouter.get('/', async (req, res) => {
-  const users = await User.find({}).populate('blogs', [
-    'url',
-    'title',
-    'author',
-    'id',
+userRouter.get("/", async (req, res) => {
+  const users = await User.find({}).populate("blogs", [
+    "url",
+    "title",
+    "author",
+    "id",
   ]);
   res.json(users);
 });
 
-userRouter.post('/', async (req, res) => {
+userRouter.post("/", async (req, res) => {
   const body = req.body;
   if (!body.password || body.password.length < 3) {
     return res.status(400).send({
-      error: 'password must be at least 3 characters',
+      error: "password must be at least 3 characters",
     });
   }
   const saltRounds = 10;

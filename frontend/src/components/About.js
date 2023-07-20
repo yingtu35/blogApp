@@ -1,9 +1,9 @@
-import Container from "@mui/material/Container"
-import Typography from "@mui/material/Typography"
-import Grid from "@mui/material/Grid"
-import Box from "@mui/material/Box"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 
 const features = [
   {
@@ -30,7 +30,7 @@ const features = [
       "Collaborate with fellow enthusiasts to expand your network and learn from each other",
     ],
   },
-]
+];
 
 const FeatureCard = ({ feature }) => {
   return (
@@ -48,8 +48,8 @@ const FeatureCard = ({ feature }) => {
         </ul>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 const About = () => {
   return (
@@ -75,7 +75,7 @@ const About = () => {
         </Grid>
       </Container>
     </Box>
-  )
-}
+  );
+};
 
-export default About
+export default About;

@@ -1,20 +1,20 @@
-import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
-import usersService from "../services/users"
-import BlogPagination from "./BlogPagination"
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import usersService from "../services/users";
+import BlogPagination from "./BlogPagination";
 
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const User = () => {
-  const [user, setUser] = useState()
-  const id = useParams().id
+  const [user, setUser] = useState();
+  const id = useParams().id;
 
   useEffect(() => {
-    usersService.getUser(id).then((returnedUser) => setUser(returnedUser))
-  }, [id])
+    usersService.getUser(id).then((returnedUser) => setUser(returnedUser));
+  }, [id]);
 
-  if (!user) return
+  if (!user) return;
   return (
     <div>
       <Typography component="h2" variant="h3">
@@ -27,7 +27,7 @@ const User = () => {
       </Box>
       <BlogPagination blogs={user.blogs} />
     </div>
-  )
-}
+  );
+};
 
-export default User
+export default User;

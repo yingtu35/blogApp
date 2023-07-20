@@ -1,17 +1,17 @@
-import React from "react"
-import { BrowserRouter as Router } from "react-router-dom"
-import "@testing-library/jest-dom/extend-expect"
-import { render, screen } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
-import Blog from "./Blog"
-import { Provider } from "react-redux"
-import store from "../buildStore"
+import React from "react";
+// import { BrowserRouter as Router } from "react-router-dom";
+import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import Blog from "./Blog";
+import { Provider } from "react-redux";
+import store from "../buildStore";
 // ! The tests are broken after redux-toolkit is used, awaiting fixing
 
-describe ("<Blog>", () => {
-  let container
-  let addLikes
-  let removeBlog
+describe("<Blog>", () => {
+  let container;
+  let addLikes;
+  let removeBlog;
 
   beforeEach(() => {
     // const user = {
@@ -33,66 +33,67 @@ describe ("<Blog>", () => {
     container = render(
       <Provider store={store}>
         <Blog />
-      </Provider>
-      , { route: "/blogs/1" }).container
-  })
+      </Provider>,
+      { route: "/blogs/1" },
+    ).container;
+  });
 
   test.only("render its title and author", () => {
-    const title = screen.getByText("test title")
-    expect(title).toBeDefined()
-  })
+    const title = screen.getByText("test title");
+    expect(title).toBeDefined();
+  });
 
   test("at start, render blog's title and author only", () => {
-    const element = screen.getByText("test title test author")
-    const detail = container.querySelector(".blogDetail")
-    expect(element).toBeDefined()
-    expect(detail).toHaveStyle("display: none")
-  })
+    const element = screen.getByText("test title test author");
+    const detail = container.querySelector(".blogDetail");
+    expect(element).toBeDefined();
+    expect(detail).toHaveStyle("display: none");
+  });
 
   test("shows url and likes when the view button is clicked", async () => {
-    const user = userEvent.setup()
+    const user = userEvent.setup();
 
-    const viewButton = screen.getByText("View")
-    await user.click(viewButton)
-    const detail = container.querySelector(".blogDetail")
-    const urlElement = screen.getByText("www.test.com")
-    const likesElement = screen.getByText("0")
-    expect(detail).not.toHaveStyle("display: none")
-    expect(urlElement).toBeDefined()
-    expect(likesElement).toBeDefined()
-  })
+    const viewButton = screen.getByText("View");
+    await user.click(viewButton);
+    const detail = container.querySelector(".blogDetail");
+    const urlElement = screen.getByText("www.test.com");
+    const likesElement = screen.getByText("0");
+    expect(detail).not.toHaveStyle("display: none");
+    expect(urlElement).toBeDefined();
+    expect(likesElement).toBeDefined();
+  });
 
   test("calls addLikes function twice when the like button is clicked twice", async () => {
-    const user = userEvent.setup()
+    const user = userEvent.setup();
 
-    const viewButton = screen.getByText("View")
-    await user.click(viewButton)
-    const likeButton = screen.getByText("like")
-    await user.click(likeButton)
-    await user.click(likeButton)
+    const viewButton = screen.getByText("View");
+    await user.click(viewButton);
+    const likeButton = screen.getByText("like");
+    await user.click(likeButton);
+    await user.click(likeButton);
 
-    expect(addLikes.mock.calls).toHaveLength(2)
-  })
+    expect(addLikes.mock.calls).toHaveLength(2);
+  });
 
   test("shows remove button when user owns the blog", async () => {
-    const user = userEvent.setup()
+    const user = userEvent.setup();
 
-    const viewButton = screen.getByText("View")
-    await user.click(viewButton)
+    const viewButton = screen.getByText("View");
+    await user.click(viewButton);
 
-    const removeButton = screen.getByText("remove")
-    expect(removeButton).toBeDefined()
-  })
+    const removeButton = screen.getByText("remove");
+    expect(removeButton).toBeDefined();
+  });
 
   test("calls removeBlog function when the remove button is clicked", async () => {
-    const user = userEvent.setup()
+    const user = userEvent.setup();
 
-    const viewButton = screen.getByText("View")
-    await user.click(viewButton)
+    const viewButton = screen.getByText("View");
+    await user.click(viewButton);
 
-    const removeButton = screen.getByText("remove")
-    await user.click(removeButton)
+    const removeButton = screen.getByText("remove");
+    await user.click(removeButton);
 
-    expect(removeBlog.mock.calls).toHaveLength(1)
-  })
-})
+    expect(removeBlog.mock.calls).toHaveLength(1);
+  });
+});

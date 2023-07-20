@@ -1,13 +1,13 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 
-import Alert from "@mui/material/Alert"
-import AlertTitle from "@mui/material/AlertTitle"
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
 const Notification = () => {
-  const message = useSelector((state) => state.notification.message)
-  const isError = useSelector((state) => state.notification.isError)
+  const message = useSelector((state) => state.notification.message);
+  const isError = useSelector((state) => state.notification.isError);
   if (!message) {
-    return
+    return;
   }
 
   return (
@@ -20,7 +20,7 @@ const Notification = () => {
       <AlertTitle>{isError ? "Error" : "Success"}</AlertTitle>
       {message}
     </Alert>
-  )
-}
+  );
+};
 
-export default Notification
+export default Notification;

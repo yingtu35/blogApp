@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var _ = require("lodash");
 
 const dummy = () => {
   return 1;
@@ -31,7 +31,7 @@ const mostBlogs = (blogs) => {
   const blogsCount = _.countBy(blogs, (blog) => blog.author);
   const blogsCountEntries = Object.entries(blogsCount);
   const maxBlogsAuthor = blogsCountEntries.reduce((acc, array) =>
-    array[1] > acc[1] ? array : acc
+    array[1] > acc[1] ? array : acc,
   );
   const res = {
     author: maxBlogsAuthor[0],
@@ -52,7 +52,7 @@ const mostLikes = (blogs) => {
     array[1].reduce((acc, blog) => acc + blog.likes, 0),
   ]);
   const mostLikesAuthor = authorLikes.reduce((acc, array) =>
-    array[1] > acc[1] ? array : acc
+    array[1] > acc[1] ? array : acc,
   );
   const res = {
     author: mostLikesAuthor[0],

@@ -1,51 +1,51 @@
-import * as React from "react"
-import { Link } from "react-router-dom"
-import AppBar from "@mui/material/AppBar"
-import Box from "@mui/material/Box"
-import Toolbar from "@mui/material/Toolbar"
-import Button from "@mui/material/Button"
-import IconButton from "@mui/material/IconButton"
-import Typography from "@mui/material/Typography"
-import Menu from "@mui/material/Menu"
-import MenuIcon from "@mui/icons-material/Menu"
-import Container from "@mui/material/Container"
-import Avatar from "@mui/material/Avatar"
-import Tooltip from "@mui/material/Tooltip"
-import MenuItem from "@mui/material/MenuItem"
-import Divider from "@mui/material/Divider"
+import * as React from "react";
+import { Link } from "react-router-dom";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import Divider from "@mui/material/Divider";
 // import AdbIcon from "@mui/icons-material/Adb"
 
-const pages = ["about", "blogs", "users"]
-const settings = ["Profile", "Account", "Dashboard"]
+const pages = ["about", "blogs", "users"];
+const settings = ["Profile", "Account", "Dashboard"];
 
 const navButton = {
   textDecoration: "none",
   color: "black",
-}
+};
 
 function ResponsiveAppBar({ user, userlogout }) {
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
-  const [anchorElUser, setAnchorElUser] = React.useState(null)
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget)
-  }
+    setAnchorElNav(event.currentTarget);
+  };
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget)
-  }
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+    setAnchorElNav(null);
+  };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
+    setAnchorElUser(null);
+  };
 
   const handleLogout = () => {
-    handleCloseUserMenu()
-    userlogout()
-  }
+    handleCloseUserMenu();
+    userlogout();
+  };
 
   return (
     <AppBar position="static" sx={{ mb: 1 }}>
@@ -190,6 +190,6 @@ function ResponsiveAppBar({ user, userlogout }) {
         </Toolbar>
       </Container>
     </AppBar>
-  )
+  );
 }
-export default ResponsiveAppBar
+export default ResponsiveAppBar;

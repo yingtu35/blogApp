@@ -1,42 +1,42 @@
-import { useState, useContext } from "react"
-import PropTypes from "prop-types"
-import { useDispatch } from "react-redux"
-import { createBlog } from "../reducers/BlogReducer"
-import { notify } from "../reducers/NotificationReducer"
+import { useState, useContext } from "react";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { createBlog } from "../reducers/BlogReducer";
+import { notify } from "../reducers/NotificationReducer";
 
-import { VisibilityContext } from "./Togglable"
+import { VisibilityContext } from "./Togglable";
 
 // import Container from "@mui/material/Container"
-import Box from "@mui/material/Box"
-import TextField from "@mui/material/TextField"
-import Button from "@mui/material/Button"
-import Typography from "@mui/material/Typography"
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const BlogForm = () => {
-  const toggleVisibility = useContext(VisibilityContext)
-  const dispatch = useDispatch()
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
-  const [url, setUrl] = useState("")
+  const toggleVisibility = useContext(VisibilityContext);
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [url, setUrl] = useState("");
 
   const addBlog = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const newBlog = {
       title,
       author,
       url,
-    }
-    const isAdded = dispatch(createBlog(newBlog))
+    };
+    const isAdded = dispatch(createBlog(newBlog));
     if (isAdded) {
-      const message = `a new blog ${newBlog.title} by ${newBlog.author} added`
-      dispatch(notify(message, false))
+      const message = `a new blog ${newBlog.title} by ${newBlog.author} added`;
+      dispatch(notify(message, false));
       // TODO: how to toggle blogform visibility
-      setTitle("")
-      setAuthor("")
-      setUrl("")
-      toggleVisibility()
+      setTitle("");
+      setAuthor("");
+      setUrl("");
+      toggleVisibility();
     }
-  }
+  };
 
   return (
     <Box>
@@ -95,11 +95,11 @@ const BlogForm = () => {
       </Box>
     </Box>
     // </Container>
-  )
-}
+  );
+};
 
 BlogForm.proptypes = {
   createBlog: PropTypes.func.isRequired,
-}
+};
 
-export default BlogForm
+export default BlogForm;

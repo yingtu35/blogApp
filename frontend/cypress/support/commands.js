@@ -12,29 +12,35 @@
 // -- This is a parent command --
 Cypress.Commands.add("login", ({ username, password }) => {
   cy.request("POST", `${Cypress.env("BACKEND")}/login`, {
-    username, password
-  })
-    .then(response => {
-      window.localStorage.setItem("loggedBloglistUser", JSON.stringify(response.body))
-      cy.visit("")
-    })
-})
+    username,
+    password,
+  }).then((response) => {
+    window.localStorage.setItem(
+      "loggedBloglistUser",
+      JSON.stringify(response.body),
+    );
+    cy.visit("");
+  });
+});
 
 Cypress.Commands.add("createBlog", ({ title, author, url }) => {
   cy.request({
     url: `${Cypress.env("BACKEND")}/blogs`,
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${JSON.parse(window.localStorage.getItem("loggedBloglistUser")).token}`
+      Authorization: `Bearer ${
+        JSON.parse(window.localStorage.getItem("loggedBloglistUser")).token
+      }`,
     },
     body: {
-      title, author, url
-    }
-  })
+      title,
+      author,
+      url,
+    },
+  });
 
-  cy.visit("")
-})
-
+  cy.visit("");
+});
 
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

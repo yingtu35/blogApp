@@ -1,16 +1,16 @@
-const blogRouter = require('express').Router();
-const Blog = require('../models/blog');
+const blogRouter = require("express").Router();
+const Blog = require("../models/blog");
 
-blogRouter.get('/', async (request, response) => {
-  const blogs = await Blog.find({}).populate('user', [
-    'username',
-    'name',
-    'id',
+blogRouter.get("/", async (request, response) => {
+  const blogs = await Blog.find({}).populate("user", [
+    "username",
+    "name",
+    "id",
   ]);
   response.json(blogs);
 });
 
-blogRouter.post('/', async (request, response, next) => {
+blogRouter.post("/", async (request, response, next) => {
   const body = request.body;
   const user = request.user;
 
@@ -24,7 +24,7 @@ blogRouter.post('/', async (request, response, next) => {
   try {
     const returnedBlog = await (
       await blog.save()
-    ).populate('user', ['username', 'name', 'id']);
+    ).populate("user", ["username", "name", "id"]);
     user.blogs = user.blogs.concat(returnedBlog._id);
     await user.save();
     response.status(201).json(returnedBlog);
@@ -33,7 +33,7 @@ blogRouter.post('/', async (request, response, next) => {
   }
 });
 
-blogRouter.post('/:id/comments', async (request, response) => {
+blogRouter.post("/:id/comments", async (request, response) => {
   const body = request.body;
   const comment = body.comment;
 
@@ -43,22 +43,22 @@ blogRouter.post('/:id/comments', async (request, response) => {
   response.status(201).json(blog);
 });
 
-blogRouter.delete('/:id', async (request, response) => {
+blogRouter.delete("/:id", async (request, response) => {
   const user = request.user;
   const blog = await Blog.findById(request.params.id);
   // console.log(blog.user)
   if (!blog || blog.user.toString() !== user._id.toString()) {
-    return response.status(403).send({ error: 'blog deletion forbidden' });
+    return response.status(403).send({ error: "blog deletion forbidden" });
   }
   await Blog.deleteOne({ _id: blog._id });
   user.blogs = user.blogs.filter(
-    (blogId) => blogId.toString() !== blog._id.toString()
+    (blogId) => blogId.toString() !== blog._id.toString(),
   );
   await user.save();
   response.status(204).end();
 });
 
-blogRouter.put('/:id', async (request, response, next) => {
+blogRouter.put("/:id", async (request, response, next) => {
   const body = request.body;
   // const user = request.user
   // const userBlogs = user.blogs.map(blog => blog.toString())
@@ -82,8 +82,8 @@ blogRouter.put('/:id', async (request, response, next) => {
     const updatedBlog = await Blog.findByIdAndUpdate(
       request.params.id,
       newBlog,
-      opts
-    ).populate('user', ['username', 'name', 'id']);
+      opts,
+    ).populate("user", ["username", "name", "id"]);
     if (updatedBlog) {
       response.status(200).json(updatedBlog);
     } else {

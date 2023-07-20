@@ -5,7 +5,7 @@ module.exports = {
     es6: true,
     "jest/globals": true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -18,7 +18,7 @@ module.exports = {
     indent: ["error", 2],
     "linebreak-style": 0,
     quotes: ["error", "double"],
-    semi: ["error", "never"],
+    semi: ["error", "always"],
     eqeqeq: "error",
     "no-trailing-spaces": "error",
     "object-curly-spacing": ["error", "always"],
@@ -32,4 +32,4 @@ module.exports = {
       version: "detect",
     },
   },
-}
+};

@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import usersService from "../services/users"
+import usersService from "../services/users";
 
-import Typography from "@mui/material/Typography"
-import Table from "@mui/material/Table"
-import TableBody from "@mui/material/TableBody"
-import TableCell from "@mui/material/TableCell"
-import TableContainer from "@mui/material/TableContainer"
-import TableHead from "@mui/material/TableHead"
-import TableRow from "@mui/material/TableRow"
-import Paper from "@mui/material/Paper"
+import Typography from "@mui/material/Typography";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 const Users = () => {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function getUsers() {
-      const returnedUsers = await usersService.getAll()
-      setUsers(returnedUsers)
+      const returnedUsers = await usersService.getAll();
+      setUsers(returnedUsers);
     }
-    getUsers()
-  }, [])
+    getUsers();
+  }, []);
 
   return (
     <div>
@@ -66,7 +66,7 @@ const Users = () => {
         </Table>
       </TableContainer>
     </div>
-  )
-}
+  );
+};
 
-export default Users
+export default Users;

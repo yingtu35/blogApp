@@ -1,22 +1,22 @@
-import { useState } from "react"
-import BlogCard from "./BlogCard"
+import { useState } from "react";
+import BlogCard from "./BlogCard";
 
-import Grid from "@mui/material/Grid"
-import Box from "@mui/material/Box"
-import Pagination from "@mui/material/Pagination"
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Pagination from "@mui/material/Pagination";
 
 const BlogPagination = ({ blogs }) => {
-  const [pageIndex, setPageIndex] = useState(0)
-  const blogsPerPage = 6
+  const [pageIndex, setPageIndex] = useState(0);
+  const blogsPerPage = 6;
 
   const handlePageChange = (event, page) => {
-    setPageIndex(page - 1)
-  }
+    setPageIndex(page - 1);
+  };
 
   const blogsToShow = blogs.slice(
     pageIndex * blogsPerPage,
-    (pageIndex + 1) * blogsPerPage
-  )
+    (pageIndex + 1) * blogsPerPage,
+  );
 
   return (
     <Box>
@@ -49,7 +49,7 @@ const BlogPagination = ({ blogs }) => {
         />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default BlogPagination
+export default BlogPagination;
