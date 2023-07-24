@@ -5,6 +5,7 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Blog from "./index";
 import { renderWithProviders } from "../../utils/test-utils";
+import { act } from "react-dom/test-utils";
 
 const user = {
   username: "test author",
@@ -19,6 +20,7 @@ const blog = {
   user: user,
   comments: [],
 };
+
 describe("<Blog>", () => {
   beforeEach(() => {
     // addLikes = jest.fn()
@@ -49,33 +51,53 @@ describe("<Blog>", () => {
     );
   });
 
-  test.only("render its information", () => {
+  test("render its title", () => {
     const title = screen.getByText(blog.title);
-    const url = screen.getByText(`${blog.url}`);
-    const likes = screen.getByText(`${blog.likes} likes`);
-    const author = screen.getByText(`added by ${blog.user.name}`);
     expect(title).toBeDefined();
+  });
+
+  test("render its url", () => {
+    const url = screen.getByText(`${blog.url}`);
     expect(url).toBeDefined();
+  });
+
+  test("render its likes", () => {
+    const likes = screen.getByText(`${blog.likes} likes`);
     expect(likes).toBeDefined();
+  });
+
+  test("render its author", () => {
+    const author = screen.getByText(`added by ${blog.user.name}`);
     expect(author).toBeDefined();
   });
 
-  test.only("display no comments when the blog has no comments", () => {
+  test("display no comments when the blog has no comments", () => {
     const noComments = screen.getByText("No comments");
     expect(noComments).toBeDefined();
     // expect(detail).toHaveStyle("display: none");
   });
 
-  test.only("click like button one time increment the number of likes", async () => {
-    // TODO: set up mock server to handle the update request
+  test("click like button one time increment the number of likes", async () => {
     const user = userEvent.setup();
 
     const curLikes = blog.likes;
     const likeButton = screen.getByText("like");
     await user.click(likeButton);
-    const likes = screen.getByText(`${curLikes} likes`);
+    const likes = await screen.findByText(`${curLikes+1} likes`);
     expect(likes).toBeDefined();
   });
+
+  test("click add comment trigger a adding comment action", async () => {
+    const user = userEvent.setup();
+
+    const textField = screen.getByLabelText("Leave a comment");
+    await act( async () => user.type(textField, "Type something"));
+    const submitButton = screen.getByRole("button", { name: "Add comment" });
+    await act( async() => user.click(submitButton));
+    const newComment = screen.getByText("Type something");
+    expect(newComment).toBeDefined();
+  });
+
 
   // test("shows url and likes when the view button is clicked", async () => {
   //   const user = userEvent.setup();
