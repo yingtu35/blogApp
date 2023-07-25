@@ -1,7 +1,7 @@
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
-import User from "./User";
-import { users } from "../mocks/data";
+import User from ".";
+import { users } from "../../mocks/data";
 
 const id = "1";
 

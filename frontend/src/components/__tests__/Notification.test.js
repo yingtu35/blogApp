@@ -1,8 +1,8 @@
 import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Notification from "./Notification";
-import { renderWithProviders } from "../utils/test-utils";
-import { successNotification, errorNotification } from "../mocks/data";
+import Notification from "../Notification";
+import { renderWithProviders } from "../../utils/test-utils";
+import { successNotification, errorNotification } from "../../mocks/data";
 
 describe("<Notification>", () => {
   test("render error message", () => {

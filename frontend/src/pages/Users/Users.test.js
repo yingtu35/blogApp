@@ -2,9 +2,9 @@ import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
-import Users from "./Users";
-import User from "./User";
-import { users } from "../mocks/data";
+import Users from "./index";
+import User from "../User";
+import { users } from "../../mocks/data";
 
 describe("<Users>", () => {
   beforeEach(() => {

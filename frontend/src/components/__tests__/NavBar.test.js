@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
-import NavBar from "./NavBar";
-import { user } from "../mocks/data";
+import NavBar from "../NavBar";
+import { user } from "../../mocks/data";
 
 describe("<NavBar>", () => {
   test("Render login button when user is not login", () => {

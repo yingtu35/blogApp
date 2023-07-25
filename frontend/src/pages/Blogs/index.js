@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 
-import Togglable from "./Togglable";
+import Togglable from "../../components/Togglable";
 import BlogForm from "./BlogForm";
-import BlogPagination from "./BlogPagination";
+import BlogPagination from "../../components/BlogPagination";
 
 import PropTypes from "prop-types";
 

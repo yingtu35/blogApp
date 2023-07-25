@@ -3,11 +3,11 @@ import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import "@testing-library/jest-dom/extend-expect";
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Blog from "./index";
-import { renderWithProviders } from "../../utils/test-utils";
+import Blog from "../index";
+import { renderWithProviders } from "../../../utils/test-utils";
 import { act } from "react-dom/test-utils";
 
-import { user, blog } from "../../mocks/data";
+import { user, blog } from "../../../mocks/data";
 
 describe("<Blog>", () => {
   beforeEach(() => {

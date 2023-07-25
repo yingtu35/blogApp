@@ -2,9 +2,9 @@ import "@testing-library/jest-dom/extend-expect";
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import BlogCard from "./BlogCard";
+import BlogCard from "../BlogCard";
 import { act } from "react-dom/test-utils";
-import { blog } from "../mocks/data";
+import { blog } from "../../mocks/data";
 
 describe("<BlogCard", () => {
   beforeEach(() => {

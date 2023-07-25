@@ -1,8 +1,8 @@
 import { screen, within } from "@testing-library/react";
-import { renderWithProviders } from "../utils/test-utils";
+import { renderWithProviders } from "../../../utils/test-utils";
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
-import Blogs from "./Blogs";
-import { blogs } from "../mocks/data";
+import Blogs from "../index";
+import { blogs } from "../../../mocks/data";
 
 const sortedBlogs = blogs.sort((a, b) => b.likes - a.likes);
 

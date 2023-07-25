@@ -4,9 +4,9 @@ import { screen } from "@testing-library/react";
 //* wrap the code rendering it and performing updates inside an act() call. This makes your test run closer to how React works in the browser.
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
-import BlogCommentForm from "./BlogCommentForm";
-import { renderWithProviders } from "../../utils/test-utils";
-import { user, blog } from "../../mocks/data";
+import BlogCommentForm from "../BlogCommentForm";
+import { renderWithProviders } from "../../../utils/test-utils";
+import { user, blog } from "../../../mocks/data";
 
 describe("<BlogCommentForm>", () => {
   beforeEach(async () => {

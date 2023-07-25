@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import usersService from "../services/users";
+import usersService from "../../services/users";
 
 import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";

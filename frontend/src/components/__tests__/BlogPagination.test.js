@@ -2,9 +2,9 @@ import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
-import BlogPagination from "./BlogPagination";
+import BlogPagination from "../BlogPagination";
 import { act } from "react-dom/test-utils";
-import { blogs } from "../mocks/data";
+import { blogs } from "../../mocks/data";
 
 describe("<BlogPagination>", () => {
   beforeEach(() => {

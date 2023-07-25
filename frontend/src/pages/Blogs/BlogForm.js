@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { createBlog } from "../reducers/BlogReducer";
-import { notify } from "../reducers/NotificationReducer";
+import { createBlog } from "../../reducers/BlogReducer";
+import { notify } from "../../reducers/NotificationReducer";
 
-import { VisibilityContext } from "../contexts/visibilityContext";
+import { VisibilityContext } from "../../contexts/visibilityContext";
 
 // import Container from "@mui/material/Container"
 import Box from "@mui/material/Box";

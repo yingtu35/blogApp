@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
-import Login from "./Login";
-import { credential } from "../mocks/data";
+import Login from "./index";
+import { credential } from "../../mocks/data";
 
 let userLogin;
 

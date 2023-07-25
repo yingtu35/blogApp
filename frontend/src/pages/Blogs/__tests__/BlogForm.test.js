@@ -2,10 +2,10 @@ import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
-import BlogForm from "./BlogForm";
-import { renderWithProviders } from "../utils/test-utils";
-import { VisibilityContext } from "../contexts/visibilityContext";
-import { user, blog } from "../mocks/data";
+import BlogForm from "../BlogForm";
+import { renderWithProviders } from "../../../utils/test-utils";
+import { VisibilityContext } from "../../../contexts/visibilityContext";
+import { user, blog } from "../../../mocks/data";
 
 describe("<BlogForm>", () => {
   let store;
