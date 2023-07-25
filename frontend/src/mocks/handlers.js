@@ -1,18 +1,5 @@
 import { rest } from "msw";
-
-const user = {
-  username: "test author",
-  name: "test author",
-};
-const blog = {
-  title: "test title",
-  author: "test author",
-  url: "www.test.com",
-  likes: 0,
-  id: "1",
-  user: user,
-  comments: [],
-};
+import { users, user, blog } from "./data";
 
 // eslint-disable-next-line no-undef
 const baseUrl = process.env.REACT_APP_BACKEND_URL;
@@ -53,5 +40,20 @@ export const handlers = [
     };
 
     return res(ctx.status(201), ctx.json(newBlog), ctx.delay(150));
+  }),
+
+  rest.get(`${baseUrl}/users`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(users),
+      ctx.delay(150)
+    );
+  }),
+
+  rest.get(`${baseUrl}/users/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+    const user = users.find(user => user.id === id);
+
+    return res(ctx.status(200), ctx.json(user), ctx.delay(150));
   }),
 ];

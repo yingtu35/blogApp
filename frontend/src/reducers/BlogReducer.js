@@ -40,7 +40,6 @@ export const initializeBlogs = () => {
   };
 };
 
-// TODO: how and where to properly set the notification message
 export const createBlog = (newBlog) => {
   return async (dispatch) => {
     try {

@@ -1,25 +1,13 @@
 import React from "react";
 import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
 import "@testing-library/jest-dom/extend-expect";
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Blog from "./index";
 import { renderWithProviders } from "../../utils/test-utils";
 import { act } from "react-dom/test-utils";
 
-const user = {
-  username: "test author",
-  name: "test author",
-};
-const blog = {
-  title: "test title",
-  author: "test author",
-  url: "www.test.com",
-  likes: 0,
-  id: "1",
-  user: user,
-  comments: [],
-};
+import { user, blog } from "../../mocks/data";
 
 describe("<Blog>", () => {
   beforeEach(() => {
@@ -83,7 +71,7 @@ describe("<Blog>", () => {
     const curLikes = blog.likes;
     const likeButton = screen.getByText("like");
     await user.click(likeButton);
-    const likes = await screen.findByText(`${curLikes+1} likes`);
+    const likes = await screen.findByText(`${curLikes + 1} likes`);
     expect(likes).toBeDefined();
   });
 
@@ -91,58 +79,12 @@ describe("<Blog>", () => {
     const user = userEvent.setup();
 
     const textField = screen.getByLabelText("Leave a comment");
-    await act( async () => user.type(textField, "Type something"));
+    await act(async () => user.type(textField, "Type something"));
     const submitButton = screen.getByRole("button", { name: "Add comment" });
-    await act( async() => user.click(submitButton));
-    const newComment = screen.getByText("Type something");
-    expect(newComment).toBeDefined();
+    await act(async () => user.click(submitButton));
+    await waitFor(() => {
+      const newComment = screen.getByText("Type something");
+      expect(newComment).toBeDefined();
+    });
   });
-
-
-  // test("shows url and likes when the view button is clicked", async () => {
-  //   const user = userEvent.setup();
-
-  //   const viewButton = screen.getByText("View");
-  //   await user.click(viewButton);
-  //   const detail = container.querySelector(".blogDetail");
-  //   const urlElement = screen.getByText("www.test.com");
-  //   const likesElement = screen.getByText("0");
-  //   expect(detail).not.toHaveStyle("display: none");
-  //   expect(urlElement).toBeDefined();
-  //   expect(likesElement).toBeDefined();
-  // });
-
-  // test("calls addLikes function twice when the like button is clicked twice", async () => {
-  //   const user = userEvent.setup();
-
-  //   const viewButton = screen.getByText("View");
-  //   await user.click(viewButton);
-  //   const likeButton = screen.getByText("like");
-  //   await user.click(likeButton);
-  //   await user.click(likeButton);
-
-  //   expect(addLikes.mock.calls).toHaveLength(2);
-  // });
-
-  // test("shows remove button when user owns the blog", async () => {
-  //   const user = userEvent.setup();
-
-  //   const viewButton = screen.getByText("View");
-  //   await user.click(viewButton);
-
-  //   const removeButton = screen.getByText("remove");
-  //   expect(removeButton).toBeDefined();
-  // });
-
-  // test("calls removeBlog function when the remove button is clicked", async () => {
-  //   const user = userEvent.setup();
-
-  //   const viewButton = screen.getByText("View");
-  //   await user.click(viewButton);
-
-  //   const removeButton = screen.getByText("remove");
-  //   await user.click(removeButton);
-
-  //   expect(removeBlog.mock.calls).toHaveLength(1);
-  // });
 });

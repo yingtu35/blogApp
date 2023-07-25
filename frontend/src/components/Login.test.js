@@ -3,6 +3,7 @@ import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import Login from "./Login";
+import { credential } from "../mocks/data";
 
 let userLogin;
 
@@ -34,14 +35,14 @@ describe("<Login>", () => {
     expect(loginButton).toBeDefined();
   });
 
-  test.only("call userLogin function when login button is pressed", async () => {
+  test("call userLogin function when login button is pressed", async () => {
     const user = userEvent.setup();
     // userLogin.mockReturnValue(false);
 
     const usernameField = screen.getByRole("textbox", { name: "username" });
     const passwordField = screen.getByRole("textbox", { name: "password" });
-    await act(async () => user.type(usernameField, "root"));
-    await act(async () => user.type(passwordField, "root"));
+    await act(async () => user.type(usernameField, credential.username));
+    await act(async () => user.type(passwordField, credential.password));
     const loginButton = screen.getByRole("button", { name: "login" });
     await act(async () => user.click(loginButton));
     expect(userLogin).toHaveBeenCalled();

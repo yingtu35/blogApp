@@ -20,7 +20,7 @@ const Blogs = () => {
     }
   };
 
-  const sortedBlogs = blogs.toSorted(compareLikes);
+  const sortedBlogs = [...blogs].sort(compareLikes);
 
   return (
     <div>

@@ -6,20 +6,7 @@ import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
 import BlogCommentForm from "./BlogCommentForm";
 import { renderWithProviders } from "../../utils/test-utils";
-
-const user = {
-  username: "test author",
-  name: "test author",
-};
-const blog = {
-  title: "test title",
-  author: "test author",
-  url: "www.test.com",
-  likes: 0,
-  id: "1",
-  user: user,
-  comments: [],
-};
+import { user, blog } from "../../mocks/data";
 
 describe("<BlogCommentForm>", () => {
   beforeEach(async () => {
@@ -56,25 +43,29 @@ describe("<BlogCommentForm>", () => {
   test("click reset button reset the comment", async () => {
     const user = userEvent.setup();
 
+    const comment = "Type something";
+
     const textField = screen.getByLabelText("Leave a comment");
-    await act( async () => user.type(textField, "Type something"));
-    const inputText = screen.getByText("Type something");
+    await act( async () => user.type(textField, comment));
+    const inputText = screen.getByText(comment);
     expect(inputText).toBeDefined();
 
     const resetButton = screen.getByText("Reset");
     await act( async() => user.click(resetButton));
-    const deletedText = screen.queryByText("Type something");
+    const deletedText = screen.queryByText(comment);
     expect(deletedText).toBeNull();
   });
 
   test("click add comment also reset the comment", async () => {
     const user = userEvent.setup();
 
+    const comment = "Type something";
+
     const textField = screen.getByLabelText("Leave a comment");
-    await act( async () => user.type(textField, "Type something"));
+    await act( async () => user.type(textField, comment));
     const submitButton = screen.getByRole("button", { name: "Add comment" });
     await act( async() => user.click(submitButton));
-    const deletedText = screen.queryByText("Type something");
+    const deletedText = screen.queryByText(comment);
     expect(deletedText).toBeNull();
   });
 

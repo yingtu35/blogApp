@@ -2,13 +2,11 @@ import {
   useState,
   forwardRef,
   useImperativeHandle,
-  createContext,
 } from "react";
+import { VisibilityContext } from "../contexts/visibilityContext";
 import PropTypes from "prop-types";
 
 import Button from "@mui/material/Button";
-
-export const VisibilityContext = createContext();
 
 const Togglable = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);

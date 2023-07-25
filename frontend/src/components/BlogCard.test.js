@@ -4,20 +4,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import BlogCard from "./BlogCard";
 import { act } from "react-dom/test-utils";
-
-const user = {
-  username: "test author",
-  name: "test author",
-};
-const blog = {
-  title: "test title",
-  author: "test author",
-  url: "www.test.com",
-  likes: 0,
-  id: "1",
-  user: user,
-  comments: [],
-};
+import { blog } from "../mocks/data";
 
 describe("<BlogCard", () => {
   beforeEach(() => {
@@ -32,16 +19,16 @@ describe("<BlogCard", () => {
   });
 
   test("render its title", () => {
-    const title = screen.getByText("test title");
+    const title = screen.getByText(blog.title);
     expect(title).toBeDefined();
   });
 
   test("render its author", () => {
-    const author = screen.getByText("test author");
+    const author = screen.getByText(blog.author);
     expect(author).toBeDefined();
   });
   test("render its url", () => {
-    const url = screen.getByText("www.test.com");
+    const url = screen.getByText(blog.url);
     expect(url).toBeDefined();
   });
   test("Press learn more button directs to its blog page", async () => {

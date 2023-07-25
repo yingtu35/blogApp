@@ -10,7 +10,7 @@ const BlogCard = ({ blog }) => {
   return (
     <Card sx={{ minWidth: 275, backgroundColor: "ghostwhite" }}>
       <CardContent>
-        <Typography variant="h5" color="text.primary" gutterBottom>
+        <Typography variant="h5" color="text.primary" gutterBottom data-testid="blog-title">
           {blog.title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
