@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import usersService from "../services/users";
-import BlogPagination from "./BlogPagination";
+import usersService from "../../services/users";
+import BlogPagination from "../../components/BlogPagination";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";

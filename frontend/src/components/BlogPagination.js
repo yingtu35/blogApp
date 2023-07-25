@@ -41,8 +41,9 @@ const BlogPagination = ({ blogs }) => {
           alignItems: "center",
         }}
       >
+        {/* //TODO: Add no blogs display */}
         <Pagination
-          count={Math.ceil(blogs.length / blogsPerPage)}
+          count={Math.max(Math.ceil(blogs.length / blogsPerPage), 1)}
           color="primary"
           defaultPage={1}
           onChange={handlePageChange}

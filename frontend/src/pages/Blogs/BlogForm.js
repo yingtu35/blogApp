@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { createBlog } from "../reducers/BlogReducer";
-import { notify } from "../reducers/NotificationReducer";
+import { createBlog } from "../../reducers/BlogReducer";
+import { notify } from "../../reducers/NotificationReducer";
 
-import { VisibilityContext } from "./Togglable";
+import { VisibilityContext } from "../../contexts/visibilityContext";
 
 // import Container from "@mui/material/Container"
 import Box from "@mui/material/Box";
@@ -28,13 +28,13 @@ const BlogForm = () => {
     };
     const isAdded = dispatch(createBlog(newBlog));
     if (isAdded) {
+      toggleVisibility();
       const message = `a new blog ${newBlog.title} by ${newBlog.author} added`;
       dispatch(notify(message, false));
       // TODO: how to toggle blogform visibility
       setTitle("");
       setAuthor("");
       setUrl("");
-      toggleVisibility();
     }
   };
 

@@ -50,6 +50,7 @@
     "@testing-library/user-event": "^14.4.3",
     "cypress": "^12.9.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-cypress": "^2.13.2"
+    "eslint-plugin-cypress": "^2.13.2",
+    "msw": "^1.2.3"
   }
 }

@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import About from "./components/About";
-import Blog from "./components/Blog";
-import Blogs from "./components/Blogs";
-import Login from "./components/Login";
-import Users from "./components/Users";
-import User from "./components/User";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Blogs from "./pages/Blogs";
+import Login from "./pages/Login";
+import Users from "./pages/Users";
+import User from "./pages/User";
 import Notification from "./components/Notification";
 import Copyright from "./components/Copyright";
 import NavBar from "./components/NavBar";

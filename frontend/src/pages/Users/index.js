@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import usersService from "../services/users";
+import usersService from "../../services/users";
 
 import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
@@ -51,6 +51,7 @@ const Users = () => {
               <TableRow
                 key={user.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                data-testid="user-row"
               >
                 <TableCell component="th" scope="row">
                   {user.username}
