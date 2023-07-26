@@ -103,6 +103,7 @@ I further modified the frontend view and add some extra functionalities to the b
 * [![MUI][MUI.com]][MUI-url]
 * [![Node.js][Node.js.com]][Node.js-url]
 * [![Docker][Docker.com]][Docker-url]
+* [![Jest][jest.com]][jest-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -111,17 +112,18 @@ I further modified the frontend view and add some extra functionalities to the b
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Follow these steps to run the application in your host machine or inside Docker containers.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+To run the application in your host machine, you need to have **npm** set up. Otherwise, you can choose to use Docker,
 * **npm**
+  
   Recommend using nvm for Node version management
 
   [nvm][nvm-url]
 * **Docker**
+  
   Use docker to easily build, and run the application
 
   [Docker][Docker.com]
@@ -177,13 +179,15 @@ This is an example of how to list things you need to use the software and how to
 
 
 <!-- USAGE EXAMPLES -->
-<!-- ## Usage
+## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Enjoy the short 2-min demo to see how BlogApp works.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+[Demo][demo-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+[![BlogApp demo](images/video%20thumbnail.png)](http://www.youtube.com/watch?v=MnJX33HtIVE "BlogApp demo")
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -194,6 +198,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Search bar for blogs
 - [ ] Search bar for users
 - [ ] Better view for comments
+- [ ] Deploy to a remote server
     <!-- - [ ] Nested Feature -->
 
 See the [open issues](https://github.com/yingtu35/blogApp/issues) for a full list of proposed features (and known issues).
@@ -281,3 +286,6 @@ Project Link: [https://github.com/yingtu35/blogApp](https://github.com/yingtu35/
 [Docker.com]: https://img.shields.io/badge/Docker-20232A?style=for-the-badge&logo=Docker&logoColor=2496ED
 [Docker-url]: https://www.docker.com/
 [nvm-url]: https://github.com/nvm-sh/nvm
+[jest.com]: https://img.shields.io/badge/Jest-15C213?style=for-the-badge&logo=Jest&logoColor=C21325
+[jest-url]: https://jestjs.io/
+[demo-url]: https://youtu.be/MnJX33HtIVE

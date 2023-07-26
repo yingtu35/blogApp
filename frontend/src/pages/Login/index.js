@@ -56,7 +56,6 @@ const Login = ({ userLogin }) => {
           />
           <TextField
             autoComplete="password"
-            autoFocus
             required
             fullWidth
             defaultValue={password}
