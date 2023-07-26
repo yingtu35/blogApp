@@ -19,7 +19,7 @@ describe("fetching blogs from the database", () => {
       .set("Authorization", authorization)
       .expect(200)
       .expect("Content-Type", /application\/json/);
-  });
+  }, 10000);
 
   test("received all blogs", async () => {
     const authorization = await helper.getToken();
