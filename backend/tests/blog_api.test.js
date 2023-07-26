@@ -9,7 +9,7 @@ const api = supertest(app);
 beforeEach(async () => {
   //initialize user and blogs
   await helper.initializeBlogs();
-});
+}, 10000);
 
 describe("fetching blogs from the database", () => {
   test("succeeds and return as json", async () => {
