@@ -9,7 +9,7 @@ const api = supertest(app);
 beforeEach(async () => {
   //initialize user and blogs
   await helper.initializeBlogs();
-});
+}, 10000);
 
 describe("fetching blogs from the database", () => {
   test("succeeds and return as json", async () => {
@@ -19,7 +19,7 @@ describe("fetching blogs from the database", () => {
       .set("Authorization", authorization)
       .expect(200)
       .expect("Content-Type", /application\/json/);
-  }, 10000);
+  });
 
   test("received all blogs", async () => {
     const authorization = await helper.getToken();
