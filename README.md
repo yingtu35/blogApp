@@ -288,4 +288,4 @@ Project Link: [https://github.com/yingtu35/blogApp](https://github.com/yingtu35/
 [nvm-url]: https://github.com/nvm-sh/nvm
 [jest.com]: https://img.shields.io/badge/Jest-15C213?style=for-the-badge&logo=Jest&logoColor=C21325
 [jest-url]: https://jestjs.io/
-[demo-url]: https://youtu.be/MnJX33HtIVE
+[demo-url]: https://youtu.be/sCE-lH05nV4
